@@ -17,6 +17,9 @@ PITCH = (
 
 
 def main() -> None:
+    # Gate (kit RULES.txt): entry must be 1-200 chars, a single line.
+    assert 1 <= len(PITCH) <= 200, "pitch must be 1-200 characters"
+    assert "\n" not in PITCH and PITCH.strip(), "pitch must be a single non-blank line"
     output_dir = Path(os.environ.get("OUTPUT_DIR", "/output"))
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "entry.txt").write_text(PITCH, encoding="utf-8")
